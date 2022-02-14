@@ -1070,20 +1070,14 @@ void SetTaskbar() {
 					std::wcout << left << std::endl;
 
 					if (sticky == 1) {
-						// Cool feature but to have this running stable all the tray icons have to be disabled to prevent the system tray area from refreshing.
-
-						ShowWindow(ToolbarWindow32, SW_HIDE);
-						ShowWindow(SysPager, SW_HIDE);
-						ShowWindow(Button, SW_HIDE);
 
 						SetWindowPos(DesktopWindowContentBridge, NULL, -(((rect_TrayNotifyWnd.right - rect_TrayNotifyWnd.left) / 2)), 0, 0, 0, SWP_NOSIZE | SWP_ASYNCWINDOWPOS | SWP_NOACTIVATE | SWP_NOZORDER | SWP_NOSENDCHANGING);
 						SetWindowPos(TrayNotifyWnd, NULL, rect_MSTaskSwWClass.right - ((rect_TrayNotifyWnd.right - rect_TrayNotifyWnd.left) / 2), 0, 0, 0, SWP_NOSIZE | SWP_ASYNCWINDOWPOS | SWP_NOACTIVATE | SWP_NOZORDER | SWP_NOSENDCHANGING);
 					}
-					else {
-						ShowWindow(ToolbarWindow32, SW_SHOW);
-						ShowWindow(SysPager, SW_SHOW);
-						ShowWindow(Button, SW_SHOW);
-					}
+					ShowWindow(ToolbarWindow32, SW_SHOW);
+					ShowWindow(SysPager, SW_SHOW);
+					ShowWindow(Button, SW_SHOW);
+					
 
 					HRGN region_ShellTrayWnd;
 					HRGN region_TrayNotifyWnd;
